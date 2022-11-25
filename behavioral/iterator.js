@@ -18,24 +18,22 @@ class Iterator {
     this.index = 0;
     this.lastIndex = items.length - 1;
   }
-}
 
-Iterator.prototype = {
-  hasNext: function () {
+  hasNext= function () {
     return this.index < this.items.length;
-  },
-  next: function () {
+  }
+  next = function () {
     return this.items[this.index++];
-  },
-  hasPrev: function () {
+  }
+  hasPrev = function () {
     return this.lastIndex >= 0;
-  },
-  prev: function () {
+  }
+  prev = function () {
     return this.items[this.lastIndex--];
-  },
-  length: function () {
+  }
+  length= function () {
     return this.items.length;
-  },
+  }
 };
 
 const iter = new Iterator(items);

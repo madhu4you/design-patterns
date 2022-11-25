@@ -3,24 +3,30 @@
  * The factory pattern is a creational design pattern that uses factory methods to create objects — rather than by calling a constructor.
  */
 
-function Developer(name) {
-  this.name = name;
+function Developer() {
   this.type = "Developer";
+  this.withName = (name) => {
+    this.name = name;
+    return this;
+  }
 }
 
-function Tester(name) {
-  this.name = name;
+function Tester() {
   this.type = "Tester";
+  this.withName = (name) => {
+    this.name = name;
+    return this;
+  }
 }
 
 function EmployeeFactory() {
-  this.create = (name, type) => {
+  this.create = (type) => {
     switch (type) {
       case "Developer":
-        return new Developer(name);
+        return new Developer();
         break;
       case "Tester":
-        return new Tester(name);
+        return new Tester();
         break;
     }
   };
@@ -28,11 +34,11 @@ function EmployeeFactory() {
 
 const employeeFactory = new EmployeeFactory();
 const employees = [];
-employees.push(employeeFactory.create("Robin", "Developer"));
-employees.push(employeeFactory.create("Jack", "Tester"));
-employees.push(employeeFactory.create("Adam", "Developer"));
-employees.push(employeeFactory.create("Christene", "Tester"));
-employees.push(employeeFactory.create("Becky", "Developer"));
+employees.push(employeeFactory.create("Developer").withName("Robin"));
+employees.push(employeeFactory.create("Tester").withName("Jack"));
+employees.push(employeeFactory.create("Developer").withName("Adam"));
+employees.push(employeeFactory.create("Tester").withName("Christene"));
+employees.push(employeeFactory.create("Developer").withName("Becky"));
 
 function say() {
   console.log(`Hi, I am ${this.name} and I am a ${this.type}`);

@@ -25,15 +25,15 @@ class UserBuilder {
   constructor(name) {
     this.user = new User(name);
   }
-  setAge(age) {
+  withAge(age) {
     this.user.age = age;
     return this;
   }
-  setPhone(phone) {
+  withPhone(phone) {
     this.user.phone = phone;
     return this;
   }
-  setAddress(address) {
+  withAddress(address) {
     this.user.address = address;
     return this;
   }
@@ -44,7 +44,7 @@ class UserBuilder {
 
 let builder = new UserBuilder("Bob").build();
 console.log(builder);
-let builder2 = new UserBuilder("Bob").setAge(10).setPhone('1234567890').build();
+let builder2 = new UserBuilder("Bob").withAge(10).withPhone('1234567890');
 
 /**
  * Example 2
